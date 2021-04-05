@@ -1,12 +1,7 @@
 package com.spring_practice.demo.domain;
-
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by jt on 12/22/19.
- */
 @Entity
 public class Book {
 
@@ -20,12 +15,12 @@ public class Book {
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private Set<Author> authors = new HashSet<>();
+    private Set<Author> authors;
 
     public Book() {
     }
 
-    public Book(String title, String isbn) {
+    public Book(String title, String isbn, Set<Author> authors) {
         this.title = title;
         this.isbn = isbn;
         this.authors = authors;
@@ -88,4 +83,3 @@ public class Book {
         return id != null ? id.hashCode() : 0;
     }
 }
-

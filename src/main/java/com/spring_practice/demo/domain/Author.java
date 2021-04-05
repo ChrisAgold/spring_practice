@@ -1,12 +1,8 @@
 package com.spring_practice.demo.domain;
-
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by jt on 12/22/19.
- */
+
 @Entity
 public class Author {
 
@@ -18,12 +14,12 @@ public class Author {
     private String lastName;
 
     @ManyToMany(mappedBy = "authors")
-    private Set<Book> books = new HashSet<>();
+    private Set<Book> books;
 
     public Author() {
     }
 
-    public Author(String firstName, String lastName) {
+    public Author(String firstName, String lastName, Set<Book> books) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.books = books;
